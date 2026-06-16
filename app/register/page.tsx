@@ -147,6 +147,10 @@ export default function RegisterPage() {
                         {error && <div className="error-alert">{error}</div>}
                         {successMessage && <div className="success-alert">{successMessage}</div>}
 
+                        <div className="register-header-text">
+                            Ayo dhaptar! Wayahe sinau, wayahe maju.
+                        </div>
+
                         {/* Nama Lengkap Input */}
                         <div className="input-group">
                             <div className="input-wrapper-shadcn">
@@ -238,12 +242,9 @@ export default function RegisterPage() {
                                 </button>
                             </div>
                         </div>
-
-
-
                         {/* Submit Button */}
                         <Button type="submit" className="w-full mt-2" disabled={isLoading}>
-                            {isLoading ? 'Ngolah...' : 'Wiwit Lelana'}
+                            {isLoading ? 'Ngolah...' : 'Wiwiti Sinau'}
                         </Button>
 
                         {/* Login Link */}
