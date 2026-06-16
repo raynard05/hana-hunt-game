@@ -396,7 +396,11 @@ input:-webkit-autofill:active {
   .logo-container {
     width: 85vw;
     max-width: 100%;
-    margin-bottom: 4vh;
+    margin-bottom: 8vh !important;
+  }
+
+  .input-shadcn::placeholder {
+    font-size: 13.5px !important;
   }
 }
 

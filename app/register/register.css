@@ -361,12 +361,14 @@ input:-webkit-autofill:active {
     padding: clamp(16px, 4vh, 20px) 4vw;
     border-radius: 20px;
     width: 92%;
-   
   }
   .logo-container {
     width: 85vw;
     max-width: 100%;
     margin-bottom: 2.5vh;
+  }
+  .input-shadcn::placeholder {
+    font-size: 13.5px !important;
   }
 }
 
