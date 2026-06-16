@@ -157,7 +157,7 @@ export default function RegisterPage() {
                                 <UserCircle className="input-icon-shadcn" size={20} />
                                 <Input
                                     type="text"
-                                    placeholder="Jeneng Jangkep"
+                                    placeholder="Jenengmu"
                                     value={namaLengkap}
                                     onChange={(e) => setNamaLengkap(e.target.value)}
                                     className="input-shadcn"
@@ -189,7 +189,7 @@ export default function RegisterPage() {
                                 <School className="input-icon-shadcn" size={20} />
                                 <Input
                                     type="text"
-                                    placeholder="Klas (Tuladha : 11 Tkj-A)"
+                                    placeholder="Klasmu (Tuladha : 11 Tkj-A)"
                                     value={kelas}
                                     onChange={(e) => setKelas(e.target.value)}
                                     className="input-shadcn"
