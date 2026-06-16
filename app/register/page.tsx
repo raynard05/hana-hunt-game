@@ -173,7 +173,7 @@ export default function RegisterPage() {
                                 <User className="input-icon-shadcn" size={20} />
                                 <Input
                                     type="text"
-                                    placeholder="Username (Tuladha: bagus)"
+                                    placeholder="Username (Tuladha: bagus33)"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     className="input-shadcn"
@@ -189,7 +189,7 @@ export default function RegisterPage() {
                                 <School className="input-icon-shadcn" size={20} />
                                 <Input
                                     type="text"
-                                    placeholder="Klas (Tuladha : 7A, 8B)"
+                                    placeholder="Klas (Tuladha : 11 Tkj-A)"
                                     value={kelas}
                                     onChange={(e) => setKelas(e.target.value)}
                                     className="input-shadcn"
