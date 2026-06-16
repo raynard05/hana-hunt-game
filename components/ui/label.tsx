@@ -7,7 +7,9 @@ export const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttribute
         ref={ref}
         className={`text-sm font-medium text-[#FFF8E1] select-none ${className}`}
         {...props}
-      />
+      >
+        {children}
+      </label>
     );
   }
 );

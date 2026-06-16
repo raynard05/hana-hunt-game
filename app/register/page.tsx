@@ -17,7 +17,6 @@ export default function RegisterPage() {
     const [kelas, setKelas] = useState('');
     const [absen, setAbsen] = useState('');
     const [password, setPassword] = useState('');
-    const [agreeTerms, setAgreeTerms] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -93,10 +92,6 @@ export default function RegisterPage() {
             return;
         }
 
-        if (!agreeTerms) {
-            setError('Sampeyan kudu setuju karo syarat & ketentuan!');
-            return;
-        }
 
         setIsLoading(true);
 
@@ -107,7 +102,6 @@ export default function RegisterPage() {
                 kelas,
                 absen,
                 password,
-                agreeTerms,
             });
 
             if (!res.success) {
@@ -245,17 +239,7 @@ export default function RegisterPage() {
                             </div>
                         </div>
 
-                        {/* Terms Agreement */}
-                        <div className="form-options">
-                            <Label className="remember-me">
-                                <Checkbox
-                                    checked={agreeTerms}
-                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAgreeTerms(e.target.checked)}
-                                    disabled={isLoading}
-                                />
-                                <span className="checkbox-label">Setuju dengan syarat & ketentuan</span>
-                            </Label>
-                        </div>
+
 
                         {/* Submit Button */}
                         <Button type="submit" className="w-full mt-2" disabled={isLoading}>

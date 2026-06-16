@@ -22,6 +22,15 @@ export default function Home() {
   const formRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  // Load remembered username on mount
+  useEffect(() => {
+    const savedUsername = localStorage.getItem('remember_username');
+    if (savedUsername) {
+      setUsername(savedUsername);
+      setRememberMe(true);
+    }
+  }, []);
+
   useEffect(() => {
     const handleResize = () => {
       // Detect if keyboard is open by checking if viewport height decreased
@@ -94,6 +103,13 @@ export default function Home() {
       // Store user info in localStorage for client-side state
       if (res.user) {
         localStorage.setItem('user_session', JSON.stringify(res.user));
+      }
+
+      // Handle Remember Me logic
+      if (rememberMe) {
+        localStorage.setItem('remember_username', username);
+      } else {
+        localStorage.removeItem('remember_username');
       }
 
       router.push('/menu');

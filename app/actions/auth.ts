@@ -34,24 +34,19 @@ export async function registerUser(data: {
   kelas: string;
   absen: string | number;
   password: string;
-  agreeTerms: boolean;
 }) {
   try {
-    const { namaLengkap, username, kelas, absen, password, agreeTerms } = data;
+    const { namaLengkap, username, kelas, absen, password } = data;
 
     if (!namaLengkap || !username || !kelas || !absen || !password) {
       return { success: false, error: 'Kabeh data kudu diisi!' };
-    }
-
-    if (!agreeTerms) {
-      return { success: false, error: 'Sampeyan kudu setuju karo syarat & ketentuan!' };
     }
 
     const cleanUsername = username.trim().toLowerCase();
 
     // Check if user already exists in db
     const { data: existingUser, error: checkError } = await supabase
-      .from('users')
+      .from('user_account')
       .select('id')
       .eq('username', cleanUsername)
       .maybeSingle();
@@ -73,13 +68,13 @@ export async function registerUser(data: {
     }
 
     const { error: insertError } = await supabase
-      .from('users')
+      .from('user_account')
       .insert({
         nama_lengkap: namaLengkap,
         username: cleanUsername,
         kelas: kelas,
-        absen: numericAbsen,
-        password: hashedPassword,
+        nomor_absen: numericAbsen,
+        kata_sandi: hashedPassword,
       });
 
     if (insertError) {
@@ -109,7 +104,7 @@ export async function loginUser(data: {
 
     // Fetch user details from database
     const { data: user, error: fetchError } = await supabase
-      .from('users')
+      .from('user_account')
       .select('*')
       .eq('username', cleanUsername)
       .maybeSingle();
@@ -123,7 +118,7 @@ export async function loginUser(data: {
       return { success: false, error: 'Username utawa kata sandi salah!' };
     }
 
-    const isValid = verifyPassword(password, user.password);
+    const isValid = verifyPassword(password, user.kata_sandi);
     if (!isValid) {
       return { success: false, error: 'Username utawa kata sandi salah!' };
     }
@@ -136,7 +131,7 @@ export async function loginUser(data: {
         namaLengkap: user.nama_lengkap,
         username: user.username,
         kelas: user.kelas,
-        absen: user.absen,
+        absen: user.nomor_absen,
       }
     };
   } catch (error: any) {
