@@ -100,7 +100,7 @@
 }
 
 .login-form-container:hover {
- border: 3px solid #cab99b;
+  border: 3px solid #cab99b;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 20px rgba(212, 165, 116, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
@@ -249,7 +249,7 @@ input:-webkit-autofill:active {
 }
 
 .forgot-password:hover {
- 
+
   text-shadow: 0 0 8px rgba(43, 62, 30, 0.3);
 }
 
@@ -466,7 +466,7 @@ input:-webkit-autofill:active {
 
   .logo-container {
     flex: 1;
-    max-width: 550px;
+    max-width: 450px;
     margin-bottom: 0;
     position: relative;
     left: -60px;
