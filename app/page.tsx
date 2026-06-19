@@ -127,7 +127,7 @@ export default function Home() {
         {/* Lelana Basa Logo */}
         <div className="logo-container">
           <Image
-            src="/Login_regist_assets/hana_hunt_title.png"
+            src="/Login_regist_assets/hana_hunt_title2.webp"
             alt="Hana Hunt"
             width={628}
             height={324}
