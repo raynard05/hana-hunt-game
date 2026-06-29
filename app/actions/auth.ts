@@ -2,7 +2,7 @@
 
 import { supabase } from '@/lib/supabase';
 import crypto from 'crypto';
-
+import { cookies } from 'next/headers';
 /**
  * Hash password using Node's PBKDF2 algorithm.
  */
@@ -81,8 +81,15 @@ export async function registerUser(data: {
       console.error('Insert user error:', insertError);
       return { success: false, error: 'Gagal nyimpen data pangguna menyang database.' };
     }
-
-    return { success: true };
+    const cookieStore = await cookies();
+    cookieStore.set('user_session', JSON.stringify(existingUser), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
+    })
+    return { success: true, user: existingUser };
   } catch (error: any) {
     console.error('Registration action error:', error);
     return { success: false, error: 'Terjadi kesalahan sistem, silakan coba lagi.' };
@@ -122,20 +129,50 @@ export async function loginUser(data: {
     if (!isValid) {
       return { success: false, error: 'Username utawa kata sandi salah!' };
     }
-
-    // Return session data (excluding password hash)
-    return {
-      success: true,
-      user: {
-        id: user.id,
-        namaLengkap: user.nama_lengkap,
-        username: user.username,
-        kelas: user.kelas,
-        absen: user.nomor_absen,
-      }
+    // 3. Prepare user data (excluding password)
+    const sessionUser = {
+      id: user.id,
+      nama_lengkap: user.nama_lengkap,
+      username: user.username,
+      kelas: user.kelas,
+      nomor_absen: user.nomor_absen,
     };
+
+    // 4. Set session cookie
+    const cookieStore = await cookies();
+    cookieStore.set('user_session', JSON.stringify(sessionUser), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+      path: '/',
+    });
+
+    return { success: true, user: sessionUser };
+
   } catch (error: any) {
     console.error('Login action error:', error);
     return { success: false, error: 'Terjadi kesalahan sistem, silakan coba lagi.' };
   }
+
+
 }
+export async function logoutUser() {
+  const cookieStore = await cookies();
+  cookieStore.delete('user_session');
+  return { success: true };
+}
+
+export async function getCurrentUser() {
+  try {
+    const cookieStore = await cookies();
+    const session = cookieStore.get('user_session')
+    if (!session || !session.value) {
+      return null;
+    }
+    return JSON.parse(session.value);
+  } catch {
+    return null;
+  }
+}
+
