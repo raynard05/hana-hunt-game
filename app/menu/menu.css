@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Use CSS background image to avoid z-index blocking issues on mobile */
+    background-image: url('/menu_assets/background_menu.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+    touch-action: manipulation;
+
+}
+
+
+
+/* Individual Top Buttons with explicit high z-index and touch-action */
+.info-btn,
+.sound-btn,
+.logout-btn {
+    position: absolute;
+    z-index: 100;
+    width: 15vh;
+    height: 15vh;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 80px;
+    max-height: 80px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+.info-btn {
+    top: 5vh;
+    left: 5vw;
+}
+
+.sound-btn {
+    top: 5vh;
+    right: 5vw;
+}
+
+.logout-btn {
+    bottom: 5vh;
+    right: 5vw;
+}
+
+
+
+/* Hover effects only on desktop with hover capabilities */
+@media (hover: hover) and (pointer: fine) {
+
+    .info-btn:hover,
+    .sound-btn:hover,
+    .logout-btn:hover {
+        transform: scale(1.5);
+    }
+}
+
+/* Use opacity instead of scale on active to avoid touch-cancel issues on mobile */
+.info-btn:active,
+.sound-btn:active,
+.logout-btn:active {
+    opacity: 0.7;
+}
+
+
+/* CRITICAL: Set pointer-events: none on images inside buttons/containers 
+   so touch events directly target the clickable elements (button / overlay-btn) */
+.icon-img {
+  object-fit: contain;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  pointer-events: none;
+}
+
+/* Center Content Area */
+.menu-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* Shift the entire central menu upwards to clear the character's body and the buffalo */
+  transform: translateY(-4vh);
+}
+
+.menu-logo-container {
+  width: 60vh;
+  max-width: 90vw;
+  aspect-ratio: 5 / 3;
+  /* Matches 500 / 300 */
+  /* Pull the subtitle ribbon much closer to the wooden sign */
+  margin-bottom: -7vh;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  /* CRITICAL: Prevent container from shrinking to 0 height on small landscape viewports */
+}
+
+.menu-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+  pointer-events: none;
+}

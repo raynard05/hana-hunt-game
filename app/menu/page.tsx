@@ -6,7 +6,7 @@ import './menu.css';
 import { useRouter } from 'next/navigation';
 import { getCurrentUser, logoutUser } from "@/app/actions/auth";
 import Link from "next/link";
-
+import Music from "@/components/Music";
 
 
 
@@ -47,6 +47,12 @@ export default function MenuPage() {
     };
 
 
+    const handleInfo = () => {
+        console.log('Info clicked');
+        router.push("./info")
+    };
+
+
 
     if (isValidating) {
         return (
@@ -61,38 +67,48 @@ export default function MenuPage() {
         <div className="menu-container">
             <div className="menu-content">
                 <div className="menu-logo-container">
-                    <Image src="" alt="hana-menu" width={500} height={300} className="menu-logo-img" priority></Image>
+                    <Image src="/menu_assets/menu-logo.webp" alt="hana-menu" width={500} height={300} className="menu-logo-img" priority></Image>
                 </div>
             </div>
-            <div className="menu-wrapper">
-                {/* Card 1: CP dan Materi */}
-        <Link href="/cp-materi" className="menu-card-link card-cp">
-          <img 
-            src={''} 
-            alt="CP dan Materi" 
-            className="menu-card-image"
-          />
-        </Link>
+            {/* <div className="menu-wrapper">
 
-        {/* Card 2: Latar Belakang */}
-        <Link href="/latar-belakang" className="menu-card-link card-latar">
-          <img 
-            src={''} 
-            alt="Latar Belakang" 
-            className="menu-card-image"
-          />
-        </Link>
+                <Link href="/cp" className="menu-card-link card-cp">
+                    <img
+                        src={'./public/menu_assets/cp.webp'}
+                        alt="CP dan Materi"
+                        className="menu-card-image"
+                    />
+                </Link>
 
-        {/* Card 3: Profil Pengembang */}
-        <Link href="" className="menu-card-link card-profil">
-          <img 
-            src={'./'} 
-            alt="Profil Pengembang" 
-            className="menu-card-image"
-          />
-        </Link>
-            </div>
 
+                <Link href="/latar" className="menu-card-link card-latar">
+                    <img
+                        src={'/menu_assets/latar_belakang.webp'}
+                        alt="Latar Belakang"
+                        className="menu-card-image"
+                    />
+                </Link>
+
+
+                <Link href="/profil" className="menu-card-link card-profil">
+                    <img
+                        src={'/menu_assets/dev.webp'}
+                        alt="Profil Pengembang"
+                        className="menu-card-image"
+                    />
+                </Link>
+            </div> */}
+
+            <button className="info-btn" onClick={handleInfo} type="button" aria-label="Information">
+                <Image src="/menu_assets/information.png" alt="Information" fill sizes="80px" className="icon-img" priority />
+            </button>
+
+            <Music className="sound-btn" />
+
+            {/* Logout button placed in bottom right */}
+            <button className="logout-btn" onClick={handleLogout} type="button" aria-label="Log Out">
+                <Image src="/menu_assets/logout.webp" alt="Log Out" fill sizes="80px" className="icon-img" priority />
+            </button>
         </div>
 
     );
