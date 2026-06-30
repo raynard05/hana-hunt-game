@@ -218,18 +218,22 @@
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
+    .menu-container {
+        background-image: url(/menu_assets/background_mobile.webp);
+    }
+
     .card-cp {
-        width: 20vh;
+        width: 18vh;
     }
 
     .card-latar {
-        width: 20vh;
+        width: 18vh;
 
     }
 
     .card-profil {
-        width: 20vh;
+        width: 17.5vh;
 
     }
 
@@ -241,9 +245,9 @@
     }
 
     .menu-logo-container {
-        width: 30vh;
+        width: 27vh;
         max-width: 75vw;
-        margin-top: 15vh;
+        margin-top: 10vh;
     }
 
     .info-btn,
@@ -263,9 +267,10 @@
     }
 
     .gamebtn {
-        margin-top: 20vh;
+
         padding: 0 6vh;
         height: 8vh;
     }
+
 
 }

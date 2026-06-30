@@ -92,7 +92,7 @@ export default function MenuPage() {
 
                     <Link href="/latar" className="menu-card-link card-latar">
                         <picture>
-                            <source media="(max-width: 480px)" srcSet="menu_assets/cp_mobile.png" />
+                            <source media="(max-width: 480px)" srcSet="menu_assets/latar_mobile.png" />
 
 
                             <img
