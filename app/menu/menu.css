@@ -247,7 +247,7 @@
     .menu-logo-container {
         width: 27vh;
         max-width: 75vw;
-        margin-top: 14vh;
+        margin-top: 17vh;
     }
 
     .info-btn,
@@ -267,7 +267,7 @@
     }
 
     .gamebtn {
-        bottom: 9.7vh;
+        bottom: 9.3vh;
         padding: 0 6vh;
         height: 8vh;
     }
