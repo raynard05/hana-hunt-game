@@ -49,6 +49,7 @@
 }
 
 
+
 .info-btn {
     top: 5vh;
     left: 5vw;
@@ -71,8 +72,9 @@
 
     .info-btn:hover,
     .sound-btn:hover,
-    .logout-btn:hover {
-        transform: scale(1.5);
+    .logout-btn:hover,
+    .gamebtn:hover {
+        transform: scale(1.2);
     }
 }
 
@@ -87,45 +89,183 @@
 /* CRITICAL: Set pointer-events: none on images inside buttons/containers 
    so touch events directly target the clickable elements (button / overlay-btn) */
 .icon-img {
-  object-fit: contain;
-  width: 100% !important;
-  height: 100% !important;
-  position: absolute !important;
-  pointer-events: none;
+    object-fit: contain;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    pointer-events: none;
 }
 
 /* Center Content Area */
 .menu-content {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  /* Shift the entire central menu upwards to clear the character's body and the buffalo */
-  transform: translateY(-4vh);
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    /* Shift the entire central menu upwards to clear the character's body and the buffalo */
+    transform: translateY(-4vh);
 }
 
 .menu-logo-container {
-  width: 60vh;
-  max-width: 90vw;
-  aspect-ratio: 5 / 3;
-  /* Matches 500 / 300 */
-  /* Pull the subtitle ribbon much closer to the wooden sign */
-  margin-bottom: -7vh;
-  display: flex;
-  justify-content: center;
-  flex-shrink: 0;
-  /* CRITICAL: Prevent container from shrinking to 0 height on small landscape viewports */
+    width: 60vh;
+    max-width: 90vw;
+    aspect-ratio: 5 / 3;
+    /* Matches 500 / 300 */
+    /* Pull the subtitle ribbon much closer to the wooden sign */
+    margin-bottom: -7vh;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    /* CRITICAL: Prevent container from shrinking to 0 height on small landscape viewports */
 }
 
 .menu-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
-  pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+}
+
+
+.gamebtn {
+    position: absolute;
+    background: linear-gradient(to bottom, #E8A672, #D28551);
+    color: #2B3E1E;
+    border: 2.5px solid #5b381b;
+    border-radius: 20px;
+    z-index: 40;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 0 20vh;
+    height: 10vh;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: -1.5px -1.5px 0 #FFF8E1, 1.5px -1.5px 0 #FFF8E1, -1.5px 1.5px 0 #FFF8E1, 1.5px 1.5px 0 #FFF8E1, -1.5px 0 0 #FFF8E1, 1.5px 0 0 #FFF8E1, 0 -1.5px 0 #FFF8E1, 0 1.5px 0 #FFF8E1;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 10vh;
+
+}
+
+.gamebtn:hover {
+    transform: scale(1.15);
+}
+
+.menu-wrapper {
+    display: flex;
+    width: 120vh;
+    z-index: 30;
+    flex-shrink: 0;
+    gap: 40px;
+    /* Jarak antar card */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20vh;
+    /* DEFAULT (MOBILE): Susunan Vertikal seperti image_e6735e.png */
+    flex-direction: column;
+}
+
+/* Tombol link pembungkus gambar */
+.menu-card-link {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    text-decoration: none;
+}
+
+/* Efek hover standar tombol game-look */
+.menu-card-link:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.menu-card-link:active {
+    transform: scale(0.98);
+}
+
+/* Gambar memenuhi container card-nya */
+.menu-card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* DESKTOP/TABLET SCREEN: Susunan Horizontal seperti image_e672a3.png */
+@media (min-width: 780px) {
+    .menu-wrapper {
+        flex-direction: row;
+        gap: 10vh;
+        width: 110vh;
+        margin-bottom: 15vh;
+        padding-top: 10vh;
+    }
+
+    .menu-logo-container {
+        width: 50vh;
+        max-width: 75vw;
+    }
+
+}
+
+
+
+
+@media (max-width: 480px) {
+    .card-cp {
+        width: 20vh;
+    }
+
+    .card-latar {
+        width: 20vh;
+
+    }
+
+    .card-profil {
+        width: 20vh;
+
+    }
+
+    .menu-wrapper {
+        gap: 3vh;
+        width: 110vh;
+        margin-bottom: 15vh;
+        padding-top: 7vh;
+    }
+
+    .menu-logo-container {
+        width: 30vh;
+        max-width: 75vw;
+        margin-top: 15vh;
+    }
+
+    .info-btn,
+    .sound-btn,
+    .logout-btn {
+        width: 7vh;
+        top: 1vh;
+
+    }
+
+    .logout-btn {
+        right: 1vh;
+    }
+
+    .sound-btn {
+        right: 10vh;
+    }
+
+    .gamebtn {
+        margin-top: 20vh;
+        padding: 0 6vh;
+        height: 8vh;
+    }
+
 }

@@ -53,6 +53,11 @@ export default function MenuPage() {
     };
 
 
+    const handleStart = () => {
+        console.log('Game clicked');
+        router.push("./game")
+    };
+
 
     if (isValidating) {
         return (
@@ -69,38 +74,54 @@ export default function MenuPage() {
                 <div className="menu-logo-container">
                     <Image src="/menu_assets/menu-logo.webp" alt="hana-menu" width={500} height={300} className="menu-logo-img" priority></Image>
                 </div>
+
+                <div className="menu-wrapper">
+
+                    <Link href="/cp_page" className="menu-card-link card-cp">
+                        <picture >
+                            <source media="(max-width: 480px)" srcSet="menu_assets/cp_mobile.png" />
+                            <img
+                                src={'menu_assets/cp.webp'}
+                                alt="CP dan Materi"
+                                className="menu-card-image"
+                            />
+                        </picture>
+
+                    </Link>
+
+
+                    <Link href="/latar" className="menu-card-link card-latar">
+                        <picture>
+                            <source media="(max-width: 480px)" srcSet="menu_assets/cp_mobile.png" />
+
+
+                            <img
+                                src={'/menu_assets/latar_belakang.webp'}
+                                alt="Latar Belakang"
+                                className="menu-card-image"
+                            />
+                        </picture>
+                    </Link>
+
+
+                    <Link href="/profil" className="menu-card-link card-profil">
+                        <picture>
+                            <source media="(max-width: 480px)" srcSet="menu_assets/profil_mobile.png" />
+
+                            <img
+                                src={'/menu_assets/dev.webp'}
+                                alt="Profil Pengembang"
+                                className="menu-card-image"
+                            />
+
+                        </picture>
+                    </Link>
+                </div>
+
             </div>
-            {/* <div className="menu-wrapper">
-
-                <Link href="/cp" className="menu-card-link card-cp">
-                    <img
-                        src={'./public/menu_assets/cp.webp'}
-                        alt="CP dan Materi"
-                        className="menu-card-image"
-                    />
-                </Link>
-
-
-                <Link href="/latar" className="menu-card-link card-latar">
-                    <img
-                        src={'/menu_assets/latar_belakang.webp'}
-                        alt="Latar Belakang"
-                        className="menu-card-image"
-                    />
-                </Link>
-
-
-                <Link href="/profil" className="menu-card-link card-profil">
-                    <img
-                        src={'/menu_assets/dev.webp'}
-                        alt="Profil Pengembang"
-                        className="menu-card-image"
-                    />
-                </Link>
-            </div> */}
 
             <button className="info-btn" onClick={handleInfo} type="button" aria-label="Information">
-                <Image src="/menu_assets/information.png" alt="Information" fill sizes="80px" className="icon-img" priority />
+                <Image src="/menu_assets/information.webp" alt="Information" fill sizes="80px" className="icon-img" priority />
             </button>
 
             <Music className="sound-btn" />
@@ -109,6 +130,11 @@ export default function MenuPage() {
             <button className="logout-btn" onClick={handleLogout} type="button" aria-label="Log Out">
                 <Image src="/menu_assets/logout.webp" alt="Log Out" fill sizes="80px" className="icon-img" priority />
             </button>
+
+            <button className="gamebtn" onClick={handleStart} type="button" >
+                Wiwiti Sinau
+            </button>
+
         </div>
 
     );
