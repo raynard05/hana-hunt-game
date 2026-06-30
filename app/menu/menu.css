@@ -238,7 +238,7 @@
     }
 
     .menu-wrapper {
-        gap: 3vh;
+        gap: 2.7vh;
         width: 110vh;
         margin-bottom: 20vh;
         padding-top: 7vh;
@@ -270,7 +270,7 @@
         bottom: 7.7vh;
         padding: 0 6vh;
         height: 8vh;
-        border-radius: 20vh;
+        border-radius: 2vh;
     }
 
 
