@@ -2,11 +2,7 @@
 import React from 'react';
 import './cp.css';
 
+// Diubah menjadi ProfilPage (P kapital)
 export default function ProfilPage() {
-    return (
-        <div>
-            {/* Isi komponen kamu */}
-            <h1>Halaman Profil</h1>
-        </div>
-    );
+  return null;
 }
