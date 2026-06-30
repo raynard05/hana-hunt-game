@@ -240,14 +240,14 @@
     .menu-wrapper {
         gap: 3vh;
         width: 110vh;
-        margin-bottom: 15vh;
+        margin-bottom: 20vh;
         padding-top: 7vh;
     }
 
     .menu-logo-container {
         width: 27vh;
         max-width: 75vw;
-        margin-top: 10vh;
+        margin-top: 14vh;
     }
 
     .info-btn,
@@ -267,7 +267,7 @@
     }
 
     .gamebtn {
-
+        bottom: 9.7vh;
         padding: 0 6vh;
         height: 8vh;
     }
