@@ -2,7 +2,7 @@
 import React from 'react';
 import './cp.css';
 
-export default function CpPage() {
+export default function latarPage() {
   return (
     <div>
       {/* Isi komponen kamu */}
